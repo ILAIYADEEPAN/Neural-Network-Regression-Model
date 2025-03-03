@@ -10,7 +10,8 @@ Explain the problem statement
 
 ## Neural Network Model
 
-Include the neural network model diagram.
+![image](https://github.com/user-attachments/assets/5e98f7b5-8198-4af8-a199-3c58746e3669)
+
 
 ## DESIGN STEPS
 
@@ -43,22 +44,40 @@ Plot the performance plot
 Evaluate the model with the testing data.
 
 ## PROGRAM
-### Name:
-### Register Number:
+### Name: ILAIYADEEPAN K
+### Register Number:212223230080
 ```python
 class NeuralNet(nn.Module):
-    def __init__(self):
-        super().__init__()
-        #Include your code here
+  def __init__(self):
+    super().__init__()
+    self.fc1 = nn.Linear(1, 8)
+    self.fc2 = nn.Linear(8, 10)
+    self.fc3 = nn.Linear(10, 1)
+    self.relu = nn.ReLU()
+    self.history = {'loss': []} 
 
+  def forward(self, x):
+    x = self.relu(self.fc1(x))
+    x = self.relu(self.fc2(x))
+    x = self.fc3(x)  
+    return x
 
-
-# Initialize the Model, Loss Function, and Optimizer
-
-
+ai_brain = NeuralNet()
+criterion = nn.MSELoss()
+optimizer = optim.RMSprop(ai_brain.parameters(), lr=0.001)
 
 def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
-    #Include your code here
+  for epoch in range(epochs):
+    optimizer.zero_grad()
+  
+    output = ai_brain(X_train)
+    loss = criterion(output, y_train)
+    loss.backward()
+    optimizer.step()
+
+    ai_brain.history['loss'].append(loss.item())
+    if epoch % 200 == 0:
+      print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
 
 
 
@@ -71,11 +90,13 @@ Include screenshot of the dataset
 
 ### Training Loss Vs Iteration Plot
 
-Include your plot here
+![image](https://github.com/user-attachments/assets/7351e5df-496c-4cb4-9936-ad19d62328e8)
+
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![image](https://github.com/user-attachments/assets/24c2b24a-6369-468d-b7b3-f35130b1e8b0)
+
 
 ## RESULT
 
