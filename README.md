@@ -6,7 +6,7 @@ To develop a neural network regression model for the given dataset.
 
 ## THEORY
 
-Explain the problem statement
+This experiment aims to build a neural network for regression tasks using the PyTorch framework. It starts with data preprocessing, where the input features and target values are extracted from a CSV file, split into training and test sets, and normalized using MinMaxScaler. The core model, a multi-layer neural network with three hidden layers, utilizes the ReLU activation function to introduce non-linearity. The model is trained using the Mean Squared Error loss function and optimized using the RMSprop optimizer. During training, the loss is recorded and plotted to visualize performance over epochs. Finally, the model's performance on the test set is evaluated and a single prediction is made to demonstrate its functionality.
 
 ## Neural Network Model
 
